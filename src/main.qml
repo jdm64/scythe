@@ -18,9 +18,9 @@ ApplicationWindow {
         spacing: 0
 
         RowLayout {
-            ResourceCounter { type: "heart" }
-            ResourceCounter { type: "coin" }
-            ResourceCounter { type: "power" }
+            ResourceCounter { id: heartCtr; type: "heart" }
+            ResourceCounter { id:  coinCtr; type: "coin" }
+            ResourceCounter { id: powerCtr; type: "power" }
 
             ComboBox {
                 id: boardSelector
@@ -56,8 +56,11 @@ ApplicationWindow {
     }
 
     function loadBoard(data) {
-        for (var i = 0; i < data.length; i++) {
-            cards.children[i].load(data[i]);
+        var cardData = data.a;
+        heartCtr.value = data.h;
+        coinCtr.value = data.c;
+        for (var i = 0; i < cardData.length; i++) {
+            cards.children[i].load(cardData[i]);
         }
     }
 }

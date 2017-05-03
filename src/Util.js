@@ -5,41 +5,48 @@ var Actions = Object.freeze({"Bolster": "ActionBolster.qml", "Move": "ActionMove
                             "Bottom": "ActionBottom.qml", "Center": "ActionCenter.qml"});
 
 var Boards = Object.freeze({
-    "Engineering": // 2h, 5c
+    "Engineering":
+      {"h": 2, "c": 5, "a":
       [ newCard(Actions.Produce, newBottom("Upgrade", 3, 1, 2)),
         newCard(Actions.Trade,   newBottom("Deploy",  4, 2, 0)),
         newCard(Actions.Bolster, newBottom("Build",   3, 2, 3)),
-        newCard(Actions.Move,    newBottom("Enlist",  3, 1, 1)) ],
-    "Mechanical": // 3h, 6c
+        newCard(Actions.Move,    newBottom("Enlist",  3, 1, 1)) ]},
+    "Mechanical":
+      {"h": 3, "c": 6, "a":
       [ newCard(Actions.Trade,   newBottom("Upgrade", 3, 1, 0)),
         newCard(Actions.Bolster, newBottom("Deploy",  3, 2, 2)),
         newCard(Actions.Move,    newBottom("Build",   3, 1, 2)),
-        newCard(Actions.Produce, newBottom("Enlist",  4, 2, 2)) ],
-    "Agricultural": // 4h, 7c
+        newCard(Actions.Produce, newBottom("Enlist",  4, 2, 2)) ]},
+    "Agricultural":
+      {"h": 4, "c": 7, "a":
       [ newCard(Actions.Move,    newBottom("Upgrade", 3, 0, 1)),
         newCard(Actions.Trade,   newBottom("Deploy",  4, 2, 0)),
         newCard(Actions.Produce, newBottom("Build",   4, 2, 2)),
-        newCard(Actions.Bolster, newBottom("Enlist",  3, 2, 3)) ],
-    "Patriotic": // 2h, 6c
+        newCard(Actions.Bolster, newBottom("Enlist",  3, 2, 3)) ]},
+    "Patriotic":
+      {"h": 2, "c": 6, "a":
       [ newCard(Actions.Move,    newBottom("Upgrade", 2, 0, 1)),
         newCard(Actions.Bolster, newBottom("Deploy",  4, 3, 3)),
         newCard(Actions.Trade,   newBottom("Build",   4, 2, 0)),
-        newCard(Actions.Produce, newBottom("Enlist",  3, 1, 2)) ],
-    "Industrial": // 2h, 4c
+        newCard(Actions.Produce, newBottom("Enlist",  3, 1, 2)) ]},
+    "Industrial":
+      {"h": 2, "c": 4, "a":
       [ newCard(Actions.Bolster, newBottom("Upgrade", 3, 1, 3)),
         newCard(Actions.Produce, newBottom("Deploy",  3, 2, 2)),
         newCard(Actions.Move,    newBottom("Build",   3, 1, 1)),
-        newCard(Actions.Trade,   newBottom("Enlist",  4, 2, 0)) ],
-    "Militant": // 2h, 4c
+        newCard(Actions.Trade,   newBottom("Enlist",  4, 2, 0)) ]},
+    "Militant":
+      {"h": 2, "c": 4, "a":
       [ newCard(Actions.Bolster, newBottom("Upgrade", 3, 2, 0)),
         newCard(Actions.Move,    newBottom("Deploy",  3, 1, 3)),
         newCard(Actions.Produce, newBottom("Build",   4, 1, 1)),
-        newCard(Actions.Trade,   newBottom("Enlist",  3, 2, 2)) ],
-    "Innovative": // 3h, 5c
+        newCard(Actions.Trade,   newBottom("Enlist",  3, 2, 2)) ]},
+    "Innovative":
+      {"h": 3, "c": 5, "a":
       [ newCard(Actions.Trade,   newBottom("Upgrade", 3, 0, 3)),
         newCard(Actions.Produce, newBottom("Deploy",  3, 1, 1)),
         newCard(Actions.Bolster, newBottom("Build",   4, 3, 2)),
-        newCard(Actions.Move,    newBottom("Enlist",  3, 2, 0)) ],
+        newCard(Actions.Move,    newBottom("Enlist",  3, 2, 0)) ]},
 });
 
 /**
