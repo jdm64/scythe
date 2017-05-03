@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>ResourceCounter.qml</file>
+        <file>ActionCard.qml</file>
+        <file>ActionMove.qml</file>
+        <file>ResourceSquare.qml</file>
+        <file>ActionBolster.qml</file>
+        <file>ActionTrade.qml</file>
+        <file>ActionBottom.qml</file>
+        <file>ActionCenter.qml</file>
+        <file>Util.js</file>
+        <file>ActionProduce.qml</file>
+    </qresource>
+</RCC>
