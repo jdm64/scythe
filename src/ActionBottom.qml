@@ -6,6 +6,7 @@ Column {
     property int cost: 2
     property int upgrade: 2
     property int payout: 1
+    property bool enlist: false
 
     // cost type
     property string ctype: {
@@ -55,6 +56,6 @@ Column {
         spacing: 5
 
         Text { text: "Gain" }
-        ResourceSquare { rtype: ptype }
+        ResourceSquare { rtype: ptype; active: enlist }
     }
 }
