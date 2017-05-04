@@ -20,7 +20,7 @@ Rectangle {
             Text { text: "Bolster" }
             ResourceSquare { rtype: "power" }
             ResourceSquare { rtype: "power" }
-            ResourceSquare { rtype: "power" }
+            ResourceSquare { rtype: "power"; active: false }
 
             Rectangle {
                 width: 2
@@ -30,7 +30,7 @@ Rectangle {
             }
 
             ResourceSquare { rtype: "acard" }
-            ResourceSquare { rtype: "acard" }
+            ResourceSquare { rtype: "acard"; active: false }
         }
         Row {
             spacing: 5
@@ -44,6 +44,7 @@ Rectangle {
                 height: 1.6 * monumentTxt.height
                 width: 1.8 * height
                 rtype: "heart"
+                active: false
             }
         }
     }

@@ -3,6 +3,7 @@ import QtQuick.Layouts 1.0
 
 Rectangle {
     property string rtype
+    property bool active: true
 
     height: parent.height
     width: height
@@ -24,5 +25,13 @@ Rectangle {
         case  "prod":  "green"; break;
         default: "white";
         }
+    }
+
+    Rectangle {
+        width: parent.width
+        height: parent.height
+        color: "black"
+        opacity: 0.5
+        visible: !active
     }
 }

@@ -23,13 +23,7 @@ Rectangle {
             ResourceSquare {
                 height: parent.height / 2
                 rtype: "move"
-
-                Rectangle {
-                    width: parent.width
-                    height: parent.height
-                    color: "black"
-                    opacity: 0.5
-                }
+                active: false
             }
 
             Rectangle {
@@ -46,13 +40,7 @@ Rectangle {
             ResourceSquare {
                 height: parent.height / 2
                 rtype: "coin"
-
-                Rectangle {
-                    width: parent.width
-                    height: parent.height
-                    color: "black"
-                    opacity: 0.5
-                }
+                active: false
             }
         }
         Row {
@@ -67,6 +55,7 @@ Rectangle {
                 height: 1.5 * mineTxt.height
                 width: 1.7 * height
                 color: "blue"
+                active: false
             }
         }
     }

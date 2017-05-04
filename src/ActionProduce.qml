@@ -22,6 +22,7 @@ Rectangle {
                     height: 1.5 * payTxt.height
                     width: payTxt.height
                     color: "red"
+                    active: false
                 }
             }
         }
@@ -31,7 +32,7 @@ Rectangle {
             Text { text: "Produce" }
             ResourceSquare { rtype: "prod" }
             ResourceSquare { rtype: "prod" }
-            ResourceSquare { rtype: "prod" }
+            ResourceSquare { rtype: "prod"; active: false }
         }
         Row {
             spacing: 5
@@ -44,6 +45,7 @@ Rectangle {
             ResourceSquare {
                 height: 1.5 * millTxt.height
                 rtype: "prod"
+                active: false
             }
         }
     }
