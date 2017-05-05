@@ -51,6 +51,10 @@ ApplicationWindow {
                     model: 5
                     ActionCard {}
                 }
+
+                function passClick(card) {
+                    clearTokens(card)
+                }
             }
         }
     }
@@ -61,6 +65,14 @@ ApplicationWindow {
         coinCtr.value = data.c;
         for (var i = 0; i < cardData.length; i++) {
             cards.children[i].load(cardData[i]);
+        }
+    }
+
+    function clearTokens(card) {
+        for (var i = 0; i < 5; i++) {
+            if (card !== cards.children[i]) {
+                cards.children[i].setToken(false)
+            }
         }
     }
 }
