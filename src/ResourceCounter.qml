@@ -6,7 +6,7 @@ Row {
     property string type
     property int value: 0
 
-    Layout.margins: 5
+    Layout.margins: 3
 
     ResourceSquare { rtype: type }
 
