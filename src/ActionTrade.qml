@@ -25,7 +25,7 @@ Column {
         }
 
         ResourceSquare { rtype: "heart" }
-        ResourceSquare { rtype: "heart" }
+        ResourceSquare { rtype: "heart"; active: false }
     }
     Row {
         spacing: 5
