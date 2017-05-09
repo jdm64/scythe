@@ -24,7 +24,7 @@ Rectangle {
         width: parent.width
         height: parent.height
         color: "black"
-        opacity: 0.5
+        opacity: 0.6
         visible: !active
     }
 }
