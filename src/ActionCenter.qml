@@ -7,6 +7,15 @@ Item {
     Layout.fillHeight: true
     Layout.fillWidth: true
 
+    MouseArea {
+        anchors.fill: parent
+
+        onDoubleClicked: {
+            parent.parent.passClick(parent)
+            token = true
+        }
+    }
+
     Rectangle {
         opacity: 1
         height: parent.height / 4
