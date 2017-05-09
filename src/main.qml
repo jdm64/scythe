@@ -39,11 +39,10 @@ ApplicationWindow {
         Flickable {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            contentWidth: 1.3 * parent.width
+            contentWidth: cards.width
 
             RowLayout {
                 id: cards
-                width: parent.width
                 height: parent.height
                 spacing: 0
 

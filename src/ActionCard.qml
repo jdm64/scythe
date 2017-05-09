@@ -2,10 +2,8 @@ import QtQuick 2.0
 import QtQuick.Layouts 1.0
 import "Util.js" as Util
 
-Rectangle {
-    Layout.fillWidth: true
-    Layout.fillHeight: true
-    border.width: 1
+ColumnLayout {
+    id: card
 
     MouseArea {
         anchors.fill: parent
@@ -14,11 +12,6 @@ Rectangle {
             parent.parent.passClick(parent)
             setToken(true)
         }
-    }
-
-    ColumnLayout {
-        id: card
-        anchors.fill: parent
     }
 
     function clear() {
