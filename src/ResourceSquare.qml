@@ -13,21 +13,11 @@ Rectangle {
     anchors.verticalCenter: parent.verticalCenter
     border.width: 1
 
-    color: {
-        switch (rtype) {
-        case   "heart":   "pink"; break;
-        case    "coin":   "gold"; break;
-        case    "wood":  "brown"; break;
-        case    "food": "yellow"; break;
-        case     "oil":   "teal"; break;
-        case    "iron":   "grey"; break;
-        case    "four": "orange"; break;
-        case "bolster":  "black"; break;
-        case   "acard":    "red"; break;
-        case    "move":   "blue"; break;
-        case    "prod":  "green"; break;
-        default: "white";
-        }
+    Image {
+        height: parent.height
+        width: parent.width
+        fillMode: Image.PreserveAspectFit
+        source: "images/" + rtype + ".png"
     }
 
     Rectangle {
