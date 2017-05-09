@@ -21,7 +21,7 @@ Column {
     // enlist type
     property string ptype: {
         switch (atype) {
-        case "Upgrade": "power"; break;
+        case "Upgrade": "bolster"; break;
         case  "Deploy":  "coin"; break;
         case   "Build": "heart"; break;
         case  "Enlist": "acard"; break;

@@ -20,7 +20,7 @@ ApplicationWindow {
         RowLayout {
             ResourceCounter { id: heartCtr; type: "heart" }
             ResourceCounter { id:  coinCtr; type: "coin" }
-            ResourceCounter { id: powerCtr; type: "power" }
+            ResourceCounter { id: powerCtr; type: "bolster" }
 
             ComboBox {
                 id: boardSelector

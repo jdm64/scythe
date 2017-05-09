@@ -12,17 +12,17 @@ Rectangle {
 
     color: {
         switch (rtype) {
-        case "heart":   "pink"; break;
-        case  "coin":   "gold"; break;
-        case  "wood":  "brown"; break;
-        case  "food": "yellow"; break;
-        case   "oil":   "teal"; break;
-        case  "iron":   "grey"; break;
-        case  "four": "orange"; break;
-        case "power":  "black"; break;
-        case "acard":    "red"; break;
-        case  "move":   "blue"; break;
-        case  "prod":  "green"; break;
+        case   "heart":   "pink"; break;
+        case    "coin":   "gold"; break;
+        case    "wood":  "brown"; break;
+        case    "food": "yellow"; break;
+        case     "oil":   "teal"; break;
+        case    "iron":   "grey"; break;
+        case    "four": "orange"; break;
+        case "bolster":  "black"; break;
+        case   "acard":    "red"; break;
+        case    "move":   "blue"; break;
+        case    "prod":  "green"; break;
         default: "white";
         }
     }

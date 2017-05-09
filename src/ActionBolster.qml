@@ -15,9 +15,9 @@ Column {
         spacing: 5
 
         ResourceLabel {  text: "Bolster" }
-        ResourceSquare { rtype: "power" }
-        ResourceSquare { rtype: "power" }
-        ResourceSquare { rtype: "power"; active: false }
+        ResourceSquare { rtype: "bolster" }
+        ResourceSquare { rtype: "bolster" }
+        ResourceSquare { rtype: "bolster"; active: false }
 
         Rectangle {
             width: 2
