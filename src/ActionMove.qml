@@ -30,7 +30,7 @@ Column {
         ResourceSquare {
             hsize: 1.4
             wsize: 2.5
-            color: "blue"
+            rtype: "mine"
             active: false
         }
     }
