@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Window 2.2
+import "Util.js" as Util
 
 Rectangle {
     property real hsize: 1
@@ -8,8 +9,8 @@ Rectangle {
     property string rtype
     property bool active: true
 
-    height: 4 * Screen.pixelDensity * hsize
-    width: 4 * Screen.pixelDensity * wsize
+    height: 2 * Util.scale(Screen.pixelDensity) * hsize
+    width: 2 * Util.scale(Screen.pixelDensity) * wsize
     anchors.verticalCenter: parent.verticalCenter
     border.width: 1
 

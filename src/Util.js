@@ -83,3 +83,8 @@ function getBoard(boardName)
 {
     return Boards[boardName];
 }
+
+function scale(density)
+{
+    return 2 * density
+}
