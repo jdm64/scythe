@@ -7,11 +7,7 @@ Column {
 
     Row {
 
-        Text {
-            id: payTxt
-            anchors.verticalCenter: parent.verticalCenter
-            text : "Pay  "
-        }
+        ResourceLabel { text : "Pay  " }
         Repeater {
             model: 6
 
@@ -26,7 +22,7 @@ Column {
     Row {
         spacing: 5
 
-        Text { text: "Produce" }
+        ResourceLabel { text: "Produce" }
         ResourceSquare { rtype: "prod" }
         ResourceSquare { rtype: "prod" }
         ResourceSquare { rtype: "prod"; active: false }
@@ -34,11 +30,7 @@ Column {
     Row {
         spacing: 5
 
-        Text {
-            id: millTxt
-            anchors.verticalCenter: parent.verticalCenter
-            text: "Mill"
-        }
+        ResourceLabel { text: "Mill" }
         ResourceSquare {
             height: 1.5 * millTxt.height
             rtype: "prod"

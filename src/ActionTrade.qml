@@ -8,13 +8,13 @@ Column {
     Row {
         spacing: 5
 
-        Text { text : "Pay" }
+        ResourceLabel { text : "Pay" }
         ResourceSquare { rtype: "coin" }
     }
     Row {
         spacing: 5
 
-        Text { text: "Trade" }
+        ResourceLabel { text: "Trade" }
         ResourceSquare { rtype: "four" }
         ResourceSquare { rtype: "four" }
 
@@ -30,11 +30,7 @@ Column {
     Row {
         spacing: 5
 
-        Text {
-            id: armoryTxt
-            anchors.verticalCenter: parent.verticalCenter
-            text: "Armory"
-        }
+        ResourceLabel { text: "Armory" }
         ResourceSquare {
             height: 2 * armoryTxt.height
             rtype: "power"

@@ -34,7 +34,7 @@ Column {
     Row {
         spacing: 5
 
-        Text { text: "Pay" }
+        ResourceLabel { text: "Pay" }
         Repeater {
             model: cost
 
@@ -44,7 +44,7 @@ Column {
     Row {
         spacing: 5
 
-        Text { text: atype }
+        ResourceLabel { text: atype }
         ResourceSquare {}
         Repeater {
             model: payout
@@ -55,7 +55,7 @@ Column {
     Row {
         spacing: 5
 
-        Text { text: "Gain" }
+        ResourceLabel { text: "Gain" }
         ResourceSquare { rtype: ptype; active: enlist }
     }
 }

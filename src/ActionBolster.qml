@@ -8,13 +8,13 @@ Column {
     Row {
         spacing: 5
 
-        Text { text : "Pay" }
+        ResourceLabel { text : "Pay" }
         ResourceSquare { rtype: "coin" }
     }
     Row {
         spacing: 5
 
-        Text { text: "Bolster" }
+        ResourceLabel {  text: "Bolster" }
         ResourceSquare { rtype: "power" }
         ResourceSquare { rtype: "power" }
         ResourceSquare { rtype: "power"; active: false }
@@ -32,11 +32,7 @@ Column {
     Row {
         spacing: 5
 
-        Text {
-            id: monumentTxt
-            anchors.verticalCenter: parent.verticalCenter
-            text: "Monument"
-        }
+        ResourceLabel { text: "Monument" }
         ResourceSquare {
             height: 1.6 * monumentTxt.height
             width: 1.8 * height

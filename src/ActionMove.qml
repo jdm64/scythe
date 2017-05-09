@@ -8,7 +8,7 @@ Column {
     Row {
         spacing: 5
 
-        Text { text: "Move/\nGain" }
+        ResourceLabel { text: "Move/\nGain" }
         ResourceSquare {
             height: parent.height / 2
             rtype: "move"
@@ -43,11 +43,7 @@ Column {
     Row {
         spacing: 5
 
-        Text {
-            id: mineTxt
-            anchors.verticalCenter: parent.verticalCenter
-            text: "Mine"
-        }
+        ResourceLabel { text: "Mine" }
         ResourceSquare {
             height: 1.5 * mineTxt.height
             width: 1.7 * height

@@ -9,11 +9,8 @@ Row {
     Layout.margins: 3
 
     ResourceSquare { rtype: type }
-
-    Label {
-        text: value
-        leftPadding: 4
-        font.pointSize: 14
-        anchors.verticalCenter: parent.verticalCenter
+    ResourceLabel {
+        text: " " + value
+        size: 1.4
     }
 }
