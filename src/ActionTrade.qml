@@ -32,7 +32,8 @@ Column {
 
         ResourceLabel { text: "Armory" }
         ResourceSquare {
-            height: 2 * armoryTxt.height
+            hsize: 1.8
+            wsize: 1.8
             rtype: "bolster"
         }
     }

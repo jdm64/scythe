@@ -34,8 +34,8 @@ Column {
 
         ResourceLabel { text: "Monument" }
         ResourceSquare {
-            height: 1.6 * monumentTxt.height
-            width: 1.8 * height
+            hsize: 1.6
+            wsize: 2.6
             rtype: "heart"
             active: false
         }

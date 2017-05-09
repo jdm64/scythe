@@ -8,15 +8,38 @@ Column {
     Row {
 
         ResourceLabel { text : "Pay  " }
-        Repeater {
-            model: 6
-
-            ResourceSquare {
-                height: 1.5 * payTxt.height
-                width: payTxt.height
-                color: "red"
-                active: false
-            }
+        ResourceSquare {
+            hsize: 1.4
+            color: "red"
+            active: false
+        }
+        ResourceSquare {
+            hsize: 1.4
+            rtype: "bolster"
+            color: "red"
+            active: false
+        }
+        ResourceSquare {
+            hsize: 1.4
+            color: "red"
+            active: false
+        }
+        ResourceSquare {
+            hsize: 1.4
+            rtype: "heart"
+            color: "red"
+            active: false
+        }
+        ResourceSquare {
+            hsize: 1.4
+            color: "red"
+            active: false
+        }
+        ResourceSquare {
+            hsize: 1.4
+            color: "red"
+            rtype: "coin"
+            active: false
         }
     }
     Row {
@@ -32,7 +55,8 @@ Column {
 
         ResourceLabel { text: "Mill" }
         ResourceSquare {
-            height: 1.5 * millTxt.height
+            hsize: 1.5
+            wsize: 1.5
             rtype: "prod"
             active: false
         }

@@ -8,7 +8,11 @@ Row {
 
     Layout.margins: 3
 
-    ResourceSquare { rtype: type }
+    ResourceSquare {
+        hsize: 1.2
+        wsize: 1.2
+        rtype: type
+    }
     ResourceLabel {
         text: " " + value
         size: 1.4

@@ -9,19 +9,9 @@ Column {
         spacing: 5
 
         ResourceLabel { text: "Move/\nGain" }
-        ResourceSquare {
-            height: parent.height / 2
-            rtype: "move"
-        }
-        ResourceSquare {
-            height: parent.height / 2
-            rtype: "move"
-        }
-        ResourceSquare {
-            height: parent.height / 2
-            rtype: "move"
-            active: false
-        }
+        ResourceSquare { rtype: "move" }
+        ResourceSquare { rtype: "move" }
+        ResourceSquare { rtype: "move"; active: false }
 
         Rectangle {
             width: 2
@@ -30,23 +20,16 @@ Column {
             color: "black"
         }
 
-        ResourceSquare {
-            height: parent.height / 2
-            rtype: "coin"
-        }
-        ResourceSquare {
-            height: parent.height / 2
-            rtype: "coin"
-            active: false
-        }
+        ResourceSquare { rtype: "coin" }
+        ResourceSquare { rtype: "coin"; active: false }
     }
     Row {
         spacing: 5
 
         ResourceLabel { text: "Mine" }
         ResourceSquare {
-            height: 1.5 * mineTxt.height
-            width: 1.7 * height
+            hsize: 1.4
+            wsize: 2.5
             color: "blue"
             active: false
         }
