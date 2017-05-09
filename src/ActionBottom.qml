@@ -28,6 +28,16 @@ Column {
         }
     }
 
+    // icon type
+    property string itype: {
+        switch (atype) {
+        case "Upgrade": "upgrade"; break;
+        case  "Deploy":    "mech"; break;
+        case   "Build":   "build"; break;
+        case  "Enlist":  "enlist"; break;
+        }
+    }
+
     spacing: 5
     Layout.margins: 5
 
@@ -45,7 +55,7 @@ Column {
         spacing: 5
 
         ResourceLabel { text: atype }
-        ResourceSquare {}
+        ResourceSquare { rtype: itype }
         Repeater {
             model: payout
 
