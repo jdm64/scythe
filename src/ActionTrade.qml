@@ -35,6 +35,7 @@ Column {
             hsize: 1.8
             wsize: 1.8
             rtype: "bolster"
+            active: false
         }
     }
 }
