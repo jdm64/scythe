@@ -18,7 +18,7 @@ Rectangle {
         height: parent.height
         width: parent.width
         fillMode: Image.PreserveAspectFit
-        source: "images/" + rtype + ".png"
+        source: rtype.length? "images/" + rtype + ".png" : ""
     }
 
     Rectangle {
