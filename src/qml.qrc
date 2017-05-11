@@ -12,5 +12,7 @@
         <file>ActionCenter.qml</file>
         <file>Util.js</file>
         <file>ActionProduce.qml</file>
+        <file>ResourceLabel.qml</file>
+        <file>ResourceSpinner.qml</file>
     </qresource>
 </RCC>
