@@ -10,34 +10,34 @@ Column {
         ResourceLabel { text : "Pay  " }
         ResourceSquare {
             hsize: 1.4
-            color: "red"
+            isPay: true
             active: false
         }
         ResourceSquare {
             hsize: 1.4
             rtype: "bolster"
-            color: "red"
+            isPay: true
             active: false
         }
         ResourceSquare {
             hsize: 1.4
-            color: "red"
+            isPay: true
             active: false
         }
         ResourceSquare {
             hsize: 1.4
             rtype: "heart"
-            color: "red"
+            isPay: true
             active: false
         }
         ResourceSquare {
             hsize: 1.4
-            color: "red"
+            isPay: true
             active: false
         }
         ResourceSquare {
             hsize: 1.4
-            color: "red"
+            isPay: true
             rtype: "coin"
             active: false
         }

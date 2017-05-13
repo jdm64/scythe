@@ -8,10 +8,12 @@ Rectangle {
     property real wsize: 1
     property string rtype
     property bool active: true
+    property bool isPay: false
 
     height: 2 * Util.scale(Screen.pixelDensity) * hsize
     width: 2 * Util.scale(Screen.pixelDensity) * wsize
     anchors.verticalCenter: parent.verticalCenter
+    color: isPay? "#983c27" : "#7b8b67"
     border.width: 1
 
     Image {

@@ -10,7 +10,7 @@ Column {
         spacing: 5
 
         ResourceLabel { text : "Pay" }
-        ResourceSquare { rtype: "coin" }
+        ResourceSquare { rtype: "coin"; isPay: true }
     }
     Row {
         spacing: 5
@@ -51,7 +51,7 @@ Column {
             Row {
                 spacing: 5
                 ResourceLabel { size: 1.4; text : "Pay" }
-                ResourceSquare { hsize: 1.4; wsize: 1.4; rtype: "coin" }
+                ResourceSquare { hsize: 1.4; wsize: 1.4; rtype: "coin"; isPay: true }
             }
             Rectangle {
                 height: 2

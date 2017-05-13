@@ -9,7 +9,7 @@ Column {
         spacing: 5
 
         ResourceLabel { text : "Pay" }
-        ResourceSquare { rtype: "coin" }
+        ResourceSquare { rtype: "coin"; isPay: true }
     }
     Row {
         spacing: 5

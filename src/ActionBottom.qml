@@ -48,7 +48,7 @@ Column {
         Repeater {
             model: cost
 
-            ResourceSquare { rtype: ctype }
+            ResourceSquare { rtype: ctype; isPay: true }
         }
     }
     Row {
