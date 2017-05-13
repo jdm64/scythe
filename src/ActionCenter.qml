@@ -11,7 +11,7 @@ Item {
         anchors.fill: parent
 
         onDoubleClicked: {
-            parent.parent.passClick(parent)
+            parent.parent.clearTokens(parent)
             token = true
         }
     }

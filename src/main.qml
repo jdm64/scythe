@@ -51,8 +51,8 @@ ApplicationWindow {
                     ActionCard {}
                 }
 
-                function passClick(card) {
-                    clearTokens(card)
+                function clearTokens(card) {
+                    root.clearTokens(card)
                 }
             }
         }

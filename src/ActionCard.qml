@@ -24,7 +24,7 @@ ColumnLayout {
             card.children[1].token = val
     }
 
-    function passClick(card) {
-        parent.passClick(card)
+    function clearTokens(card) {
+        parent.clearTokens(card)
     }
 }
