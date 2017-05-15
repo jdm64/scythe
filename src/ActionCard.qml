@@ -27,4 +27,12 @@ ColumnLayout {
     function clearTokens(card) {
         parent.clearTokens(card)
     }
+
+    function updateResource(type, delta) {
+        parent.updateResource(type, delta)
+    }
+
+    function getResource(type) {
+        return parent.getResource(type)
+    }
 }

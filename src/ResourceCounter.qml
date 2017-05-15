@@ -17,4 +17,12 @@ Row {
         text: " " + value
         size: 1.4
     }
+
+    function getValue() {
+        return value
+    }
+
+    function changeValue(delta) {
+        value += delta
+    }
 }

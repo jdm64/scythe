@@ -54,6 +54,14 @@ ApplicationWindow {
                 function clearTokens(card) {
                     root.clearTokens(card)
                 }
+
+                function updateResource(type, delta) {
+                    root.updateResource(type, delta)
+                }
+
+                function getResource(type) {
+                    return root.getResource(type)
+                }
             }
         }
     }
@@ -73,5 +81,21 @@ ApplicationWindow {
                 cards.children[i].setToken(false)
             }
         }
+    }
+
+    function getResourceCtr(type) {
+        switch (type) {
+        case "heart":   return heartCtr;
+        case "coin":    return coinCtr;
+        case "bolster": return powerCtr;
+        }
+    }
+
+    function updateResource(type, delta) {
+        getResourceCtr(type).changeValue(delta)
+    }
+
+    function getResource(type) {
+        return getResourceCtr(type).getValue()
     }
 }
