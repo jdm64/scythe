@@ -19,12 +19,7 @@ Column {
         ResourceSquare { rtype: "bolster" }
         ResourceSquare { rtype: "bolster"; active: false }
 
-        Rectangle {
-            width: 2
-            height: parent.height
-            anchors.verticalCenter: parent.verticalCenter
-            color: "black"
-        }
+        Divider { hoz: false; size: 2 }
 
         ResourceSquare { rtype: "acard" }
         ResourceSquare { rtype: "acard"; active: false }

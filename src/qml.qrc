@@ -14,5 +14,6 @@
         <file>ActionProduce.qml</file>
         <file>ResourceLabel.qml</file>
         <file>ResourceSpinner.qml</file>
+        <file>Divider.qml</file>
     </qresource>
 </RCC>

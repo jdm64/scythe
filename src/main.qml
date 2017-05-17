@@ -30,11 +30,7 @@ ApplicationWindow {
             }
         }
 
-        Rectangle {
-            height: 1
-            color: "black"
-            Layout.fillWidth: true
-        }
+        Divider {}
 
         Flickable {
             Layout.fillWidth: true
@@ -46,10 +42,15 @@ ApplicationWindow {
                 height: parent.height
                 spacing: 0
 
-                Repeater {
-                    model: 5
-                    ActionCard {}
-                }
+                ActionCard {}
+                Divider { hoz: false }
+                ActionCard {}
+                Divider { hoz: false }
+                ActionCard {}
+                Divider { hoz: false }
+                ActionCard {}
+                Divider { hoz: false }
+                ActionCard {}
 
                 function clearTokens(card) {
                     root.clearTokens(card)
@@ -71,14 +72,14 @@ ApplicationWindow {
         heartCtr.value = data.h;
         coinCtr.value = data.c;
         for (var i = 0; i < cardData.length; i++) {
-            cards.children[i].load(cardData[i]);
+            cards.children[2 * i].load(cardData[i]);
         }
     }
 
     function clearTokens(card) {
         for (var i = 0; i < 5; i++) {
             if (card !== cards.children[i]) {
-                cards.children[i].setToken(false)
+                cards.children[2 * i].setToken(false)
             }
         }
     }

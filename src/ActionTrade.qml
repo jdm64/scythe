@@ -19,11 +19,7 @@ Column {
         ResourceSquare { rtype: "four" }
         ResourceSquare { rtype: "four" }
 
-        Rectangle {
-            width: 2
-            height: parent.height
-            color: "black"
-        }
+        Divider { hoz: false; size: 2 }
 
         ResourceSquare { rtype: "heart" }
         ResourceSquare { rtype: "heart"; active: false }
@@ -53,11 +49,9 @@ Column {
                 ResourceLabel { size: 1.4; text : "Pay" }
                 ResourceSquare { hsize: 1.4; wsize: 1.4; rtype: "coin"; isPay: true }
             }
-            Rectangle {
-                height: 2
-                color: "black"
-                Layout.fillWidth: true
-            }
+
+            Divider { size: 2 }
+
             Row {
                 spacing: 5
                 ResourceSpinner { type: "food"; }
@@ -68,11 +62,9 @@ Column {
                 ResourceSpinner { type: "oil" }
                 ResourceSpinner { type: "iron" }
             }
-            Rectangle {
-                height: 1
-                color: "black"
-                Layout.fillWidth: true
-            }
+
+            Divider {}
+
             Row {
                 spacing: 5
                 ResourceSpinner { type: "heart" }

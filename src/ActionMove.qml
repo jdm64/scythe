@@ -13,12 +13,7 @@ Column {
         ResourceSquare { rtype: "move" }
         ResourceSquare { rtype: "move"; active: false }
 
-        Rectangle {
-            width: 2
-            height: 0.8 * parent.height
-            anchors.verticalCenter: parent.verticalCenter
-            color: "black"
-        }
+        Divider { hoz: false; size: 2 }
 
         ResourceSquare { rtype: "coin" }
         ResourceSquare { rtype: "coin"; active: false }
