@@ -29,6 +29,7 @@ Column {
 
         ResourceLabel { text: "Armory" }
         ResourceSquare {
+            id: armory
             hsize: 1.8
             wsize: 1.8
             rtype: "bolster"
@@ -68,6 +69,14 @@ Column {
             Row {
                 spacing: 5
                 ResourceSpinner { type: "heart" }
+            }
+
+            Divider { visible: armory.active; size: 2 }
+
+            Row {
+                visible: armory.active
+                spacing: 5
+                ResourceSpinner { type: "bolster" }
             }
         }
     }
