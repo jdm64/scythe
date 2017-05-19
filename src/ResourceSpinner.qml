@@ -5,6 +5,7 @@ Row {
     id: rspinner
 
     property string type
+    property int max: 9
 
     signal changed(var spinner)
 
@@ -20,6 +21,7 @@ Row {
         id: box
         height: sq.height
         width: 4.1 * height
+        to: max
 
         onValueChanged: rspinner.changed(rspinner)
     }

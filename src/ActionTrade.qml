@@ -55,21 +55,21 @@ Column {
 
             Row {
                 spacing: 5
-                ResourceSpinner { id: s_oil; type: "oil"; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_oil; type: "oil"; max: 2; onChanged: dialog.fixValues(spinner) }
                 ResourceSpinner { id: s_iron; type: "iron"; onChanged: dialog.fixValues(spinner) }
 
             }
             Row {
                 spacing: 5
-                ResourceSpinner { id: s_wood; type: "wood"; onChanged: dialog.fixValues(spinner) }
-                ResourceSpinner { id: s_food; type: "food"; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_wood; type: "wood"; max: 2; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_food; type: "food"; max: 2; onChanged: dialog.fixValues(spinner) }
             }
 
             Divider {}
 
             Row {
                 spacing: 5
-                ResourceSpinner { id: s_heart; type: "heart"; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_heart; type: "heart"; max: heart2.active + 1; onChanged: dialog.fixValues(spinner) }
             }
 
             Divider { visible: armory.active; size: 2 }
@@ -77,7 +77,7 @@ Column {
             Row {
                 visible: armory.active
                 spacing: 5
-                ResourceSpinner { id: s_bolster; type: "bolster"; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_bolster; type: "bolster"; max: armory.active; onChanged: dialog.fixValues(spinner) }
             }
         }
 
@@ -92,25 +92,16 @@ Column {
         }
 
         function fixValues(spinner) {
-            if (parent.parent.getResource("coin") < 1) {
+            if (spinner.type === "bolster") {
+                return
+            } else if (parent.parent.getResource("coin") < 1) {
                 spinner.setValue(0)
                 return
-            } else if (spinner.getValue() > 2) {
-                spinner.setValue(2)
-                return
             } else if (spinner.type === "heart") {
-                s_food.setValue(0)
-                s_wood.setValue(0)
                 s_oil.setValue(0)
                 s_iron.setValue(0)
-                if (!heart2.active && spinner.getValue() > 1) {
-                    spinner.setValue(1)
-                }
-                return
-            } else if (spinner.type === "bolster") {
-                if (spinner.getValue() > 1) {
-                    spinner.setValue(1)
-                }
+                s_wood.setValue(0)
+                s_food.setValue(0)
                 return
             }
 
@@ -143,9 +134,7 @@ Column {
         }
 
         function init() {
-            if (armory.active) {
-                s_bolster.setValue(1)
-            }
+            s_bolster.setValue(armory.active)
         }
     }
 
