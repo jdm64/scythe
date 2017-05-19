@@ -81,6 +81,16 @@ Column {
             }
         }
 
+        onAccepted: {
+            if (parent.parent.getResource("coin") > 0) {
+                parent.parent.updateResource("coin", -1)
+                var r = [s_oil, s_iron, s_wood, s_food, s_heart, s_bolster]
+                for (var i = 0; i < r.length; i++) {
+                    parent.parent.updateResource(r[i].type, r[i].getValue())
+                }
+            }
+        }
+
         function fixValues(spinner) {
             if (parent.parent.getResource("coin") < 1) {
                 spinner.setValue(0)
