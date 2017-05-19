@@ -55,13 +55,14 @@ Column {
 
             Row {
                 spacing: 5
-                ResourceSpinner { id: s_food; type: "food"; onChanged: dialog.fixValues(spinner) }
-                ResourceSpinner { id: s_wood; type: "wood"; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_oil; type: "oil"; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_iron; type: "iron"; onChanged: dialog.fixValues(spinner) }
+
             }
             Row {
                 spacing: 5
-                ResourceSpinner { id: s_oil; type: "oil"; onChanged: dialog.fixValues(spinner) }
-                ResourceSpinner { id: s_iron; type: "iron"; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_wood; type: "wood"; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_food; type: "food"; onChanged: dialog.fixValues(spinner) }
             }
 
             Divider {}
