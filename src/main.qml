@@ -19,8 +19,8 @@ ApplicationWindow {
 
         RowLayout {
             ResourceCounter { id:  coinCtr; type: "coin" }
-            ResourceCounter { id: heartCtr; type: "heart" }
-            ResourceCounter { id: powerCtr; type: "bolster" }
+            ResourceCounter { id: heartCtr; type: "heart"; max: 18 }
+            ResourceCounter { id: powerCtr; type: "bolster"; max: 16 }
             ResourceCounter { id:   oilCtr; type: "oil" }
             ResourceCounter { id:  ironCtr; type: "iron" }
             ResourceCounter { id:  woodCtr; type: "wood" }

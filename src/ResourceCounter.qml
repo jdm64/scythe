@@ -5,6 +5,7 @@ import QtQuick.Layouts 1.0
 Row {
     property string type
     property int value: 0
+    property int max: 0
 
     Layout.margins: 3
 
@@ -24,5 +25,8 @@ Row {
 
     function changeValue(delta) {
         value += delta
+        if (max && value > max) {
+            value = max
+        }
     }
 }
