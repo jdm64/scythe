@@ -18,8 +18,8 @@ ApplicationWindow {
         spacing: 0
 
         RowLayout {
-            ResourceCounter { id: heartCtr; type: "heart" }
             ResourceCounter { id:  coinCtr; type: "coin" }
+            ResourceCounter { id: heartCtr; type: "heart" }
             ResourceCounter { id: powerCtr; type: "bolster" }
             ResourceCounter { id:   oilCtr; type: "oil" }
             ResourceCounter { id:  ironCtr; type: "iron" }
