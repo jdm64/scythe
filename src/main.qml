@@ -21,6 +21,10 @@ ApplicationWindow {
             ResourceCounter { id: heartCtr; type: "heart" }
             ResourceCounter { id:  coinCtr; type: "coin" }
             ResourceCounter { id: powerCtr; type: "bolster" }
+            ResourceCounter { id:   oilCtr; type: "oil" }
+            ResourceCounter { id:  ironCtr; type: "iron" }
+            ResourceCounter { id:  woodCtr; type: "wood" }
+            ResourceCounter { id:  foodCtr; type: "food" }
 
             ComboBox {
                 id: boardSelector
@@ -86,9 +90,13 @@ ApplicationWindow {
 
     function getResourceCtr(type) {
         switch (type) {
-        case "heart":   return heartCtr;
-        case "coin":    return coinCtr;
+        case   "heart": return heartCtr;
+        case    "coin": return  coinCtr;
         case "bolster": return powerCtr;
+        case     "oil": return   oilCtr;
+        case    "iron": return  ironCtr;
+        case    "wood": return  woodCtr;
+        case    "food": return  foodCtr;
         }
     }
 
