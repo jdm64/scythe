@@ -55,18 +55,6 @@ ApplicationWindow {
                 ActionCard {}
                 Divider { hoz: false }
                 ActionCard {}
-
-                function clearTokens(card) {
-                    root.clearTokens(card)
-                }
-
-                function updateResource(type, delta) {
-                    root.updateResource(type, delta)
-                }
-
-                function getResource(type) {
-                    return root.getResource(type)
-                }
             }
         }
     }

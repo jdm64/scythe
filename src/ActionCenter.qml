@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
+import QtQuick.Controls 2.1
 
 Item {
     property bool token: false
@@ -11,7 +12,7 @@ Item {
         anchors.fill: parent
 
         onDoubleClicked: {
-            parent.parent.clearTokens(parent)
+            ApplicationWindow.window.clearTokens(parent)
             token = true
         }
     }
