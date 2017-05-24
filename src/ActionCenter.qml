@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls 2.1
+import QtQuick.Window 2.2
+import "Util.js" as Util
 
 Item {
     property bool token: false
@@ -19,10 +21,10 @@ Item {
 
     Rectangle {
         opacity: 1
-        height: parent.height / 4
-        width: parent.width / 4
+        height: .5 * Math.min(parent.height, parent.width)
+        width: height
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.bottom: parent.bottom
 
         visible: token
         color: "green"
