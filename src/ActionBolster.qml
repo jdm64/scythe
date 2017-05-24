@@ -43,6 +43,9 @@ Column {
         modal: true
         closePolicy: "NoAutoClose"
         standardButtons: Dialog.Cancel|Dialog.Ok
+        x: (ApplicationWindow.window.width - dialog.width) / 2
+        y: (ApplicationWindow.window.height - dialog.height) / 2
+        parent: ApplicationWindow.overlay
         title: "Bolster Action"
 
         ColumnLayout {
@@ -74,11 +77,11 @@ Column {
         }
 
         onAccepted: {
-            if (parent.parent.getResource("coin") > 0) {
-                parent.parent.updateResource("coin", -1)
+            if (ApplicationWindow.window.getResource("coin") > 0) {
+                ApplicationWindow.window.updateResource("coin", -1)
                 var r = [s_bolster, s_heart]
                 for (var i = 0; i < r.length; i++) {
-                    parent.parent.updateResource(r[i].type, r[i].getValue())
+                    ApplicationWindow.window.updateResource(r[i].type, r[i].getValue())
                 }
             }
         }
@@ -86,7 +89,7 @@ Column {
         function fixValues(spinner) {
             if (spinner.type === "heart") {
                 return
-            } else if (parent.parent.getResource("coin") < 1) {
+            } else if (ApplicationWindow.window.getResource("coin") < 1) {
                 spinner.setValue(0)
                 return
             } else if (spinner.type === "bolster") {

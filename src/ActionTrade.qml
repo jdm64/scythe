@@ -42,6 +42,9 @@ Column {
         modal: true
         closePolicy: "NoAutoClose"
         standardButtons: Dialog.Cancel|Dialog.Ok
+        x: (ApplicationWindow.window.width - dialog.width) / 2
+        y: (ApplicationWindow.window.height - dialog.height) / 2
+        parent: ApplicationWindow.overlay
         title: "Trade Action"
 
         ColumnLayout {
@@ -82,11 +85,11 @@ Column {
         }
 
         onAccepted: {
-            if (parent.parent.getResource("coin") > 0) {
-                parent.parent.updateResource("coin", -1)
+            if (ApplicationWindow.window.getResource("coin") > 0) {
+                ApplicationWindow.window.updateResource("coin", -1)
                 var r = [s_oil, s_iron, s_wood, s_food, s_heart, s_bolster]
                 for (var i = 0; i < r.length; i++) {
-                    parent.parent.updateResource(r[i].type, r[i].getValue())
+                    ApplicationWindow.window.updateResource(r[i].type, r[i].getValue())
                 }
             }
         }
@@ -94,7 +97,7 @@ Column {
         function fixValues(spinner) {
             if (spinner.type === "bolster") {
                 return
-            } else if (parent.parent.getResource("coin") < 1) {
+            } else if (ApplicationWindow.window.getResource("coin") < 1) {
                 spinner.setValue(0)
                 return
             } else if (spinner.type === "heart") {

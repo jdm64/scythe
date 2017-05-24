@@ -73,6 +73,9 @@ Column {
         modal: true
         closePolicy: "NoAutoClose"
         standardButtons: Dialog.Cancel|Dialog.Ok
+        x: (ApplicationWindow.window.width - dialog.width) / 2
+        y: (ApplicationWindow.window.height - dialog.height) / 2
+        parent: ApplicationWindow.overlay
         title: "Produce Action"
 
         ColumnLayout {
@@ -106,11 +109,11 @@ Column {
         onAccepted: {
             var p = [bolster, heart, coin]
             for (var i = 0; i < p.length; i++) {
-                parent.parent.updateResource(p[i].rtype, -p[i].active)
+                ApplicationWindow.window.updateResource(p[i].rtype, -p[i].active)
             }
             var r = [s_oil, s_iron, s_wood, s_food]
             for (i = 0; i < r.length; i++) {
-                parent.parent.updateResource(r[i].type, r[i].getValue())
+                ApplicationWindow.window.updateResource(r[i].type, r[i].getValue())
             }
             var worker = s_worker.getValue()
             var c = firstWorker.parent.children
@@ -124,9 +127,9 @@ Column {
         }
 
         function fixValues(spinner) {
-            if (bolster.active && parent.parent.getResource("bolster") < 1
-                    || heart.active && parent.parent.getResource("heart") < 1
-                    || coin.active && parent.parent.getResource("coin") < 1) {
+            if (bolster.active && ApplicationWindow.window.getResource("bolster") < 1
+                    || heart.active && ApplicationWindow.window.getResource("heart") < 1
+                    || coin.active && ApplicationWindow.window.getResource("coin") < 1) {
                 spinner.setValue(0)
                 return
             }

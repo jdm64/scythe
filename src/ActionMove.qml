@@ -36,6 +36,9 @@ Column {
         modal: true
         closePolicy: "NoAutoClose"
         standardButtons: Dialog.Cancel|Dialog.Ok
+        x: (ApplicationWindow.window.width - dialog.width) / 2
+        y: (ApplicationWindow.window.height - dialog.height) / 2
+        parent: ApplicationWindow.overlay
         title: "Move Action"
 
         ColumnLayout {
@@ -51,7 +54,7 @@ Column {
         }
 
         onAccepted: {
-            parent.parent.updateResource("coin", s_coin.getValue())
+            ApplicationWindow.window.updateResource("coin", s_coin.getValue())
         }
 
         function fixValues(spinner) {
