@@ -68,4 +68,7 @@ Column {
         ResourceLabel { text: "Gain" }
         ResourceSquare { rtype: ptype; active: enlist }
     }
+
+    function doAction() {
+    }
 }

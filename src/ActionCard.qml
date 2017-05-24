@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
+import QtQuick.Controls 2.1
 import "Util.js" as Util
 
 ColumnLayout {
@@ -22,5 +23,15 @@ ColumnLayout {
     function setToken(val) {
         if (card.children[1])
             card.children[1].token = val
+    }
+
+    function doTopAction() {
+        card.children[0].doAction(card)
+    }
+
+    function doBottomAction() {
+        ApplicationWindow.window.clearTokens(card)
+        setToken(true)
+        card.children[2].doAction()
     }
 }

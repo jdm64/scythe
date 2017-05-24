@@ -3,6 +3,8 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls 2.1
 
 Column {
+    property var cardObj
+
     Layout.margins: 5
     spacing: 5
 
@@ -124,6 +126,7 @@ Column {
                 c[i].active = true
                 worker--
             }
+            cardObj.doBottomAction()
         }
 
         function fixValues(spinner) {
@@ -162,7 +165,8 @@ Column {
         }
     }
 
-    function doAction() {
+    function doAction(card) {
+        cardObj = card
         dialog.init()
         dialog.open()
     }

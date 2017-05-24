@@ -14,8 +14,7 @@ Item {
         anchors.fill: parent
 
         onDoubleClicked: {
-            ApplicationWindow.window.clearTokens(parent)
-            token = true
+            parent.parent.doTopAction()
         }
     }
 
