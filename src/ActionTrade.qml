@@ -56,7 +56,7 @@ Column {
             Row {
                 spacing: 5
                 ResourceSpinner { id: s_oil; type: "oil"; max: 2; onChanged: dialog.fixValues(spinner) }
-                ResourceSpinner { id: s_iron; type: "iron"; onChanged: dialog.fixValues(spinner) }
+                ResourceSpinner { id: s_iron; type: "iron"; max: 2; onChanged: dialog.fixValues(spinner) }
 
             }
             Row {
