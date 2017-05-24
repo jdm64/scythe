@@ -83,7 +83,7 @@ ApplicationWindow {
 
     function clearTokens(card) {
         for (var i = 0; i < 5; i++) {
-            if (card !== cards.children[i]) {
+            if (card !== cards.children[2 * i]) {
                 cards.children[2 * i].setToken(false)
             }
         }
