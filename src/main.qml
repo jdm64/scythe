@@ -10,7 +10,10 @@ ApplicationWindow {
     height: 360
     title: qsTr("Scythe Player Board")
 
-    Component.onCompleted: loadBoard(Util.getBoard(boardSelector.currentText))
+    Component.onCompleted: {
+        loadBoard(Util.getBoard(boardSelector.currentText))
+        fixCardWidths()
+    }
 
     ColumnLayout {
         height: parent.height
@@ -56,6 +59,16 @@ ApplicationWindow {
                 Divider { hoz: false }
                 ActionCard {}
             }
+        }
+    }
+
+    function fixCardWidths() {
+        var max = 0
+        for (var i = 0; i < 5; i++) {
+            max = Math.max(max, cards.children[2 * i].width)
+        }
+        for (i = 0; i < 5; i++) {
+            cards.children[2 * i].Layout.minimumWidth = max
         }
     }
 
