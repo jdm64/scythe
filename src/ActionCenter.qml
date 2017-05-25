@@ -18,7 +18,7 @@ Item {
         }
     }
 
-    Rectangle {
+    Image {
         opacity: 1
         height: .5 * Math.min(parent.height, parent.width)
         width: height
@@ -26,6 +26,6 @@ Item {
         anchors.bottom: parent.bottom
 
         visible: token
-        color: "green"
+        source: "images/token.png"
     }
 }
