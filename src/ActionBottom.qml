@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.0
+import QtQuick.Controls 2.1
 
 Column {
     property string atype: "Upgrade"
@@ -69,6 +70,59 @@ Column {
         ResourceSquare { rtype: ptype; active: enlist }
     }
 
+    Dialog {
+        id: deploy_dialog
+        modal: true
+        closePolicy: "NoAutoClose"
+        standardButtons: Dialog.Cancel|Dialog.Ok
+        x: (ApplicationWindow.window.width - deploy_dialog.width) / 2
+        y: (ApplicationWindow.window.height - deploy_dialog.height) / 2
+        parent: ApplicationWindow.overlay
+        title: "Deploy Action"
+
+        ColumnLayout {
+            Row {
+                spacing: 5
+                ResourceLabel { size: 1.4; text : "Pay" }
+                Repeater {
+                    model: cost
+
+                    ResourceSquare { rtype: ctype; isPay: true; hsize: 1.4; wsize: 1.4 }
+                }
+            }
+
+            Divider { size: 2 }
+
+            Row {
+                spacing: 5
+                ResourceLabel { size: 1.4; text : "Deploy" }
+                ResourceSquare { rtype: itype; hsize: 1.4; wsize: 1.4 }
+            }
+
+            Divider { visible: enlist || payout }
+
+            Row {
+                spacing: 5
+                visible: enlist || payout
+
+                ResourceSpinner { id: deploy_coin; type: "coin"; max: payout + enlist }
+            }
+        }
+
+        onAccepted: {
+            if (ApplicationWindow.window.getResource(ctype) >= cost ) {
+                ApplicationWindow.window.updateResource(ctype, -cost)
+                ApplicationWindow.window.updateResource("coin", deploy_coin.getValue())
+            }
+        }
+
+        function init() {
+            deploy_coin.setValue(payout + enlist)
+        }
+    }
+
     function doAction() {
+        deploy_dialog.init()
+        deploy_dialog.open()
     }
 }
