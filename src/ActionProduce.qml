@@ -109,22 +109,26 @@ Column {
         }
 
         onAccepted: {
-            var p = [bolster, heart, coin]
-            for (var i = 0; i < p.length; i++) {
-                ApplicationWindow.window.updateResource(p[i].rtype, -p[i].active)
-            }
-            var r = [s_oil, s_iron, s_wood, s_food]
-            for (i = 0; i < r.length; i++) {
-                ApplicationWindow.window.updateResource(r[i].type, r[i].getValue())
-            }
-            var worker = s_worker.getValue()
-            var c = firstWorker.parent.children
-            for (i = 1; i < c.length && worker; i++) {
-                if (c[i].active) {
-                    continue
+            if ((!bolster.active || ApplicationWindow.window.getResource("bolster") > 0)
+                    && (!heart.active || ApplicationWindow.window.getResource("heart") > 0)
+                    && (!coin.active || ApplicationWindow.window.getResource("coin") > 0)) {
+                var p = [bolster, heart, coin]
+                for (var i = 0; i < p.length; i++) {
+                    ApplicationWindow.window.updateResource(p[i].rtype, -p[i].active)
                 }
-                c[i].active = true
-                worker--
+                var r = [s_oil, s_iron, s_wood, s_food]
+                for (i = 0; i < r.length; i++) {
+                    ApplicationWindow.window.updateResource(r[i].type, r[i].getValue())
+                }
+                var worker = s_worker.getValue()
+                var c = firstWorker.parent.children
+                for (i = 1; i < c.length && worker; i++) {
+                    if (c[i].active) {
+                        continue
+                    }
+                    c[i].active = true
+                    worker--
+                }
             }
             cardObj.doBottomAction()
         }
