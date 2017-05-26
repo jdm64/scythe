@@ -3,6 +3,8 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls 2.1
 
 Column {
+    id: root
+
     property string atype: "Upgrade"
     property int cost: 2
     property int upgrade: 2
@@ -70,59 +72,49 @@ Column {
         ResourceSquare { rtype: ptype; active: enlist }
     }
 
-    Dialog {
+    BottomDialog {
         id: deploy_dialog
-        modal: true
-        closePolicy: "NoAutoClose"
-        standardButtons: Dialog.Cancel|Dialog.Ok
-        x: (ApplicationWindow.window.width - deploy_dialog.width) / 2
-        y: (ApplicationWindow.window.height - deploy_dialog.height) / 2
-        parent: ApplicationWindow.overlay
-        title: "Deploy Action"
 
-        ColumnLayout {
+        title: atype + " Action"
+        ctype: root.ctype
+        cost: root.cost
+        payout: root.payout
+        ptype: root.ptype
+        enlist: root.enlist
+
+        actionBody: Component {
             Row {
                 spacing: 5
-                ResourceLabel { size: 1.4; text : "Pay" }
-                Repeater {
-                    model: cost
-
-                    ResourceSquare { rtype: ctype; isPay: true; hsize: 1.4; wsize: 1.4 }
-                }
-            }
-
-            Divider { size: 2 }
-
-            Row {
-                spacing: 5
-                ResourceLabel { size: 1.4; text : "Deploy" }
+                ResourceLabel { size: 1.4; text: atype }
                 ResourceSquare { rtype: itype; hsize: 1.4; wsize: 1.4 }
-            }
-
-            Divider { visible: enlist || payout }
-
-            Row {
-                spacing: 5
-                visible: enlist || payout
-
-                ResourceSpinner { id: deploy_coin; type: "coin"; max: payout + enlist }
             }
         }
 
         onAccepted: {
             if (ApplicationWindow.window.getResource(ctype) >= cost ) {
                 ApplicationWindow.window.updateResource(ctype, -cost)
-                ApplicationWindow.window.updateResource("coin", deploy_coin.getValue())
+                ApplicationWindow.window.updateResource("coin", deploy_dialog.coinCtr.getValue())
             }
         }
 
         function init() {
-            deploy_coin.setValue(payout + enlist)
+            deploy_dialog.coinCtr.setValue(payout)
+            deploy_dialog.enlistCtr.setValue(enlist)
         }
     }
 
     function doAction() {
-        deploy_dialog.init()
-        deploy_dialog.open()
+        var d = getDialog()
+        d.init()
+        d.open()
+    }
+
+    function getDialog() {
+        switch (atype) {
+        case "Upgrade": return deploy_dialog
+        case  "Deploy": return deploy_dialog
+        case   "Build": return deploy_dialog
+        case  "Enlist": return deploy_dialog
+        }
     }
 }
