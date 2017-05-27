@@ -72,7 +72,7 @@ Column {
         ResourceSquare { rtype: ptype; active: enlist }
     }
 
-    BottomDialog {
+    DialogBottom {
         id: deploy_dialog
 
         title: atype + " Action"
@@ -104,7 +104,7 @@ Column {
         }
     }
 
-    BottomDialog {
+    DialogBottom {
         id: build_dialog
 
         title: atype + " Action"

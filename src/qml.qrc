@@ -7,7 +7,7 @@
         <file>ActionMove.qml</file>
         <file>ActionProduce.qml</file>
         <file>ActionTrade.qml</file>
-        <file>BottomDialog.qml</file>
+        <file>DialogBottom.qml</file>
         <file>Divider.qml</file>
         <file>ResourceCounter.qml</file>
         <file>ResourceLabel.qml</file>
