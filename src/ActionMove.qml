@@ -26,6 +26,7 @@ Column {
 
         ResourceLabel { text: "Mine" }
         ResourceSquare {
+            id: mine
             hsize: 1.4
             wsize: 2.5
             rtype: "mine"
@@ -74,5 +75,9 @@ Column {
     function doAction(card) {
         cardObj = card
         dialog.open()
+    }
+
+    function getBuilding(data) {
+        data["mine"] = mine
     }
 }

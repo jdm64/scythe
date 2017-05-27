@@ -11,6 +11,7 @@ Dialog {
 
     property alias coinCtr: s_coin
     property alias enlistCtr: s_enlist
+    property alias inner: loader
 
     property Component actionBody: null
 
@@ -36,6 +37,7 @@ Dialog {
         Divider { size: 2 }
 
         Loader {
+            id: loader
             sourceComponent: actionBody
         }
 

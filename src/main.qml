@@ -108,4 +108,12 @@ ApplicationWindow {
     function getResource(type) {
         return getResourceCtr(type).getValue()
     }
+
+    function getBuilding() {
+        var data = {}
+        for (var i = 0; i < 4; i++) {
+            cards.children[2 * i].children[0].getBuilding(data)
+        }
+        return data
+    }
 }

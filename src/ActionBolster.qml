@@ -114,4 +114,8 @@ Column {
         dialog.init()
         dialog.open()
     }
+
+    function getBuilding(data) {
+        data["monument"] = monument
+    }
 }

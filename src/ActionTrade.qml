@@ -149,4 +149,8 @@ Column {
         dialog.init()
         dialog.open()
     }
+
+    function getBuilding(data) {
+        data["armory"] = armory
+    }
 }

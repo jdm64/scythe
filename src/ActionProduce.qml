@@ -188,4 +188,8 @@ Column {
         }
         return 0
     }
+
+    function getBuilding(data) {
+        data["mill"] = mill
+    }
 }
