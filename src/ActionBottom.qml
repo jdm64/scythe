@@ -94,6 +94,7 @@ Column {
             if (ApplicationWindow.window.getResource(ctype) >= cost ) {
                 ApplicationWindow.window.updateResource(ctype, -cost)
                 ApplicationWindow.window.updateResource("coin", deploy_dialog.coinCtr.getValue())
+                ApplicationWindow.window.updateResource(ptype, deploy_dialog.enlistCtr.getValue())
             }
         }
 
