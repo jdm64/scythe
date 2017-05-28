@@ -1,5 +1,5 @@
 import QtQuick 2.7
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
 import "Util.js" as Util
 
@@ -28,6 +28,7 @@ ApplicationWindow {
             ResourceCounter { id:  ironCtr; type: "iron" }
             ResourceCounter { id:  woodCtr; type: "wood" }
             ResourceCounter { id:  foodCtr; type: "food" }
+            ResourceCounter { type: "enlist"; onClicked: enlist_dialog.open() }
 
             ComboBox {
                 id: boardSelector
@@ -59,6 +60,25 @@ ApplicationWindow {
                 Divider { hoz: false }
                 ActionCard {}
             }
+        }
+    }
+
+    Dialog {
+        id: enlist_dialog
+        modal: true
+        closePolicy: "NoAutoClose"
+        standardButtons: Dialog.Ok
+        x: (ApplicationWindow.window.width - width) / 2
+        y: (ApplicationWindow.window.height - height) / 2
+        parent: ApplicationWindow.overlay
+        title: "Enlisted"
+
+        Row {
+            spacing: 5
+            ResourceSquare { rtype: "bolster"; hsize: 1.8; wsize: 1.8 }
+            ResourceSquare { rtype: "coin"; hsize: 1.8; wsize: 1.8 }
+            ResourceSquare { rtype: "heart"; hsize: 1.8; wsize: 1.8 }
+            ResourceSquare { rtype: "acard"; hsize: 1.8; wsize: 1.8 }
         }
     }
 

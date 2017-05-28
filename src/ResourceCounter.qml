@@ -7,12 +7,19 @@ Row {
     property int value: 0
     property int max: 0
 
+    signal clicked(var self)
+
     Layout.margins: 3
 
     ResourceSquare {
         hsize: 1.2
         wsize: 1.2
         rtype: type
+
+        MouseArea {
+            anchors.fill: parent
+            onDoubleClicked: parent.parent.clicked(parent.parent)
+        }
     }
     ResourceLabel {
         text: " " + value
