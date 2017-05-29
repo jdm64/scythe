@@ -90,6 +90,14 @@ ApplicationWindow {
         for (i = 0; i < 5; i++) {
             cards.children[2 * i].Layout.minimumWidth = max
         }
+
+        max = 0
+        for (i = 0; i < 4; i++) {
+            max = Math.max(max, cards.children[2 * i].children[0].height)
+        }
+        for (i = 0; i < 4; i++) {
+            cards.children[2 * i].children[0].Layout.minimumHeight = max
+        }
     }
 
     function loadBoard(data) {

@@ -20,10 +20,10 @@ Item {
 
     Image {
         opacity: 1
-        height: .5 * Math.min(parent.height, parent.width)
+        height: .8 * Math.min(parent.height, parent.width)
         width: height
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
+        anchors.verticalCenter: parent.verticalCenter
 
         visible: token
         source: "images/token.png"
