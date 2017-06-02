@@ -28,6 +28,7 @@ ApplicationWindow {
             ResourceCounter { id:  ironCtr; type: "iron" }
             ResourceCounter { id:  woodCtr; type: "wood" }
             ResourceCounter { id:  foodCtr; type: "food" }
+            ResourceCounter { id: acardCtr; type: "acard"; visible: false }
             ResourceCounter { type: "enlist"; onClicked: enlist_dialog.open() }
 
             ComboBox {
@@ -74,6 +75,7 @@ ApplicationWindow {
         title: "Enlisted"
 
         Row {
+            id: enlist_data
             spacing: 5
             ResourceSquare { rtype: "bolster"; hsize: 1.8; wsize: 1.8 }
             ResourceSquare { rtype: "coin"; hsize: 1.8; wsize: 1.8 }
@@ -126,6 +128,7 @@ ApplicationWindow {
         case    "iron": return  ironCtr;
         case    "wood": return  woodCtr;
         case    "food": return  foodCtr;
+        case   "acard": return acardCtr;
         }
     }
 
@@ -143,5 +146,22 @@ ApplicationWindow {
             cards.children[2 * i].children[0].getBuilding(data)
         }
         return data
+    }
+
+    function getEnlist() {
+        var data = {}
+        data["to"] = enlist_data.children
+        data["from"] = []
+        for (var i = 0; i < 4; i++) {
+            data["from"].push(cards.children[2 * i].children[2].getEnlist())
+        }
+        return data
+    }
+
+    function setEnlist(data) {
+        cards.children[2 * data["from"]].children[2].setEnlist(true)
+        var toEnlist = enlist_data.children[data["to"]]
+        toEnlist.active = false
+        updateResource(toEnlist.rtype, 2)
     }
 }

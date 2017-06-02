@@ -69,7 +69,7 @@ Column {
         spacing: 5
 
         ResourceLabel { text: "Gain" }
-        ResourceSquare { rtype: ptype; active: enlist }
+        ResourceSquare { id: enlist_sq; rtype: ptype; active: enlist }
     }
 
     DialogBottom {
@@ -206,6 +206,103 @@ Column {
         }
     }
 
+    DialogBottom {
+        id: enlist_dialog
+
+        title: atype + " Action"
+        ctype: root.ctype
+        cost: root.cost
+        payout: root.payout
+        ptype: root.ptype
+        enlist: root.enlist
+
+        property int topSelect: -1
+        property int botSelect: -1
+
+        actionBody: Component {
+            ColumnLayout {
+                Row {
+                    spacing: 5
+                    ResourceLabel { size: 1.4; text: "From" }
+                    ResourceSquare { rtype: "bolster"; hsize: 1.4; wsize: 1.4
+                        Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                        MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, true) }
+                    }
+                    ResourceSquare { rtype: "coin"; hsize: 1.4; wsize: 1.4; active: false
+                        Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                        MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, true) }
+                    }
+                    ResourceSquare { rtype: "heart"; hsize: 1.4; wsize: 1.4
+                        Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                        MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, true) }
+                    }
+                    ResourceSquare { rtype: "acard"; hsize: 1.4; wsize: 1.4
+                        Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                        MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, true) }
+                    }
+                }
+                Row {
+                    spacing: 5
+                    ResourceLabel { size: 1.4; text: "To     " }
+                    ResourceSquare { rtype: "bolster"; hsize: 1.4; wsize: 1.4
+                        Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                        MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, false) }
+                    }
+                    ResourceSquare { rtype: "coin"; hsize: 1.4; wsize: 1.4
+                        Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                        MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, false) }
+                    }
+                    ResourceSquare { rtype: "heart"; hsize: 1.4; wsize: 1.4
+                        Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                        MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, false) }
+                    }
+                    ResourceSquare { rtype: "acard"; hsize: 1.4; wsize: 1.4
+                        Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                        MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, false) }
+                    }
+                }
+                function select(item, isTop) {
+                    if (isTop === item.active) {
+                        return
+                    }
+                    var res = item.parent.children
+                    for (var i = 1; i < 5; i++) {
+                        var same = res[i] === item
+                        res[i].children[2].visible = same
+                        if (same) {
+                            if (isTop) {
+                                enlist_dialog.topSelect = i - 1
+                            } else {
+                                enlist_dialog.botSelect = i - 1
+                            }
+                        }
+                    }
+                }
+                function init(data) {
+                    for (var i = 1; i < 5; i++) {
+                        this.children[0].children[i].active = data["from"][i - 1].active
+                        this.children[1].children[i].active = data["to"][i - 1].active
+                    }
+                }
+            }
+        }
+
+        onAccepted: {
+            if (ApplicationWindow.window.getResource(ctype) >= cost ) {
+                ApplicationWindow.window.updateResource(ctype, -cost)
+                ApplicationWindow.window.updateResource("coin", enlist_dialog.coinCtr.getValue())
+                ApplicationWindow.window.updateResource(ptype, enlist_dialog.enlistCtr.getValue())
+                ApplicationWindow.window.setEnlist({"from": topSelect, "to": botSelect})
+            }
+        }
+
+        function init() {
+            enlist_dialog.inner.children[0].init(ApplicationWindow.window.getEnlist())
+            enlist_dialog.coinCtr.setValue(payout)
+            enlist_dialog.enlistCtr.setValue(enlist)
+        }
+    }
+
     function doAction() {
         var d = getDialog()
         d.init()
@@ -217,7 +314,15 @@ Column {
         case "Upgrade": return deploy_dialog
         case  "Deploy": return deploy_dialog
         case   "Build": return build_dialog
-        case  "Enlist": return deploy_dialog
+        case  "Enlist": return enlist_dialog
         }
+    }
+
+    function getEnlist() {
+        return enlist_sq
+    }
+
+    function setEnlist(val) {
+        enlist_sq.active = val
     }
 }
