@@ -84,6 +84,10 @@ ApplicationWindow {
         }
     }
 
+    function getAction(cardIdx, actionIdx) {
+        return cards.children[2 * cardIdx].children[actionIdx]
+    }
+
     function fixCardWidths() {
         var max = 0
         for (var i = 0; i < 5; i++) {
@@ -95,10 +99,10 @@ ApplicationWindow {
 
         max = 0
         for (i = 0; i < 4; i++) {
-            max = Math.max(max, cards.children[2 * i].children[0].height)
+            max = Math.max(max, getAction(i, 0).height)
         }
         for (i = 0; i < 4; i++) {
-            cards.children[2 * i].children[0].Layout.minimumHeight = max
+            getAction(i, 0).Layout.minimumHeight = max
         }
     }
 
@@ -143,7 +147,7 @@ ApplicationWindow {
     function getBuilding() {
         var data = {}
         for (var i = 0; i < 4; i++) {
-            cards.children[2 * i].children[0].getBuilding(data)
+            getAction(i, 0).getBuilding(data)
         }
         return data
     }
@@ -153,13 +157,13 @@ ApplicationWindow {
         data["to"] = enlist_data.children
         data["from"] = []
         for (var i = 0; i < 4; i++) {
-            data["from"].push(cards.children[2 * i].children[2].getEnlist())
+            data["from"].push(getAction(i, 2).getEnlist())
         }
         return data
     }
 
     function setEnlist(data) {
-        cards.children[2 * data["from"]].children[2].setEnlist(true)
+        getAction(data["from"], 2).setEnlist(true)
         var toEnlist = enlist_data.children[data["to"]]
         toEnlist.active = false
         updateResource(toEnlist.rtype, 2)
