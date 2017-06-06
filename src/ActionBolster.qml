@@ -118,4 +118,9 @@ Column {
     function getBuilding(data) {
         data["monument"] = monument
     }
+
+    function getUpgrade(list) {
+        list.push(bolster3)
+        list.push(acard2)
+    }
 }

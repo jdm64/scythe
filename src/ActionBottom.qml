@@ -46,6 +46,7 @@ Column {
 
     Row {
         spacing: 5
+        id: payRow
 
         ResourceLabel { text: "Pay" }
         Repeater {
@@ -70,6 +71,95 @@ Column {
 
         ResourceLabel { text: "Gain" }
         ResourceSquare { id: enlist_sq; rtype: ptype; active: enlist }
+    }
+
+    DialogBottom {
+        id: upgrade_dialog
+
+        title: atype + " Action"
+        ctype: root.ctype
+        cost: root.cost
+        payout: root.payout
+        ptype: root.ptype
+        enlist: root.enlist
+
+        property int topSelect: -1
+        property int botSelect: -1
+
+        actionBody: Component {
+            ColumnLayout {
+                Row {
+                    spacing: 5
+                    ResourceLabel { size: 1.4; text: "From" }
+                    Repeater {
+                        model: 6
+                        ResourceSquare { hsize: 1.4; wsize: 1.4
+                            Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                            MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, true) }
+                        }
+                    }
+                }
+                Row {
+                    spacing: 5
+                    ResourceLabel { size: 1.4; text: "To     " }
+                    Repeater {
+                        model: 4
+                        ResourceSquare { hsize: 1.4; wsize: 1.4
+                            Rectangle { visible: false; opacity: .4; color: "blue"; z: 3; anchors.fill: parent }
+                            MouseArea { anchors.fill: parent; onDoubleClicked: select(parent, false) }
+                        }
+                    }
+                }
+                function select(item, isTop) {
+                    if (isTop === item.active) {
+                        return
+                    }
+                    var res = item.parent.children
+                    for (var i = 1; i < 5; i++) {
+                        var same = res[i] === item
+                        res[i].children[2].visible = same
+                        if (same) {
+                            if (isTop) {
+                                upgrade_dialog.topSelect = i - 1
+                            } else {
+                                upgrade_dialog.botSelect = i - 1
+                            }
+                        }
+                    }
+                }
+                function init(data) {
+                    for (var i = 1; i < 7; i++) {
+                        this.children[0].children[i].active = data["from"][i - 1].active
+                        this.children[0].children[i].rtype = data["from"][i - 1].rtype
+                    }
+                    for (i = 0; i < data["to"].length; i++) {
+                        this.children[1].children[i + 1].active = data["to"][i].active
+                        this.children[1].children[i + 1].rtype = data["to"][i].rtype
+                        this.children[1].children[i + 1].visible = true
+                    }
+                    for (i = data["to"].length; i < 5; i++) {
+                        this.children[1].children[i + 1].visible = false
+                    }
+                }
+            }
+        }
+
+        onAccepted: {
+            if (ApplicationWindow.window.getResource(ctype) >= cost ) {
+                ApplicationWindow.window.updateResource(ctype, -cost)
+                ApplicationWindow.window.updateResource("coin", upgrade_dialog.coinCtr.getValue())
+                ApplicationWindow.window.updateResource(ptype, upgrade_dialog.enlistCtr.getValue())
+                var data = ApplicationWindow.window.getUpgrade()
+                data["from"][topSelect].active = true
+                data["to"][botSelect].active = false
+            }
+        }
+
+        function init() {
+            upgrade_dialog.inner.children[0].init(ApplicationWindow.window.getUpgrade())
+            upgrade_dialog.coinCtr.setValue(payout)
+            upgrade_dialog.enlistCtr.setValue(enlist)
+        }
     }
 
     DialogBottom {
@@ -311,7 +401,7 @@ Column {
 
     function getDialog() {
         switch (atype) {
-        case "Upgrade": return deploy_dialog
+        case "Upgrade": return upgrade_dialog
         case  "Deploy": return deploy_dialog
         case   "Build": return build_dialog
         case  "Enlist": return enlist_dialog
@@ -324,5 +414,23 @@ Column {
 
     function setEnlist(val) {
         enlist_sq.active = val
+    }
+
+    function getUpgrade(list) {
+        var c = payRow.children
+        var u = []
+        for (var i = cost - upgrade + 1; i < c.length - 1; i++) {
+            u.push(c[i])
+        }
+        while (u.length > 1) {
+            if (!u[u.length - 1].active) {
+                u.pop()
+            }
+            break
+        }
+        var x = u.pop()
+        if (x) {
+            list.push(x)
+        }
     }
 }

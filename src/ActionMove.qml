@@ -80,4 +80,9 @@ Column {
     function getBuilding(data) {
         data["mine"] = mine
     }
+
+    function getUpgrade(list) {
+        list.push(move3)
+        list.push(coin2)
+    }
 }

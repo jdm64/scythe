@@ -168,4 +168,15 @@ ApplicationWindow {
         toEnlist.active = false
         updateResource(toEnlist.rtype, 2)
     }
+
+    function getUpgrade() {
+        var data = {}
+        data["from"] = []
+        data["to"] = []
+        for (var i = 0; i < 4; i++) {
+            getAction(i, 0).getUpgrade(data["from"])
+            getAction(i, 2).getUpgrade(data["to"])
+        }
+        return data
+    }
 }

@@ -55,7 +55,7 @@ Column {
         ResourceLabel { text: "Produce" }
         ResourceSquare { rtype: "prod" }
         ResourceSquare { rtype: "prod" }
-        ResourceSquare { rtype: "prod"; active: false }
+        ResourceSquare { id: prod3; rtype: "prod"; active: false }
     }
     Row {
         spacing: 5
@@ -191,5 +191,9 @@ Column {
 
     function getBuilding(data) {
         data["mill"] = mill
+    }
+
+    function getUpgrade(list) {
+        list.push(prod3)
     }
 }

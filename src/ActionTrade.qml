@@ -153,4 +153,8 @@ Column {
     function getBuilding(data) {
         data["armory"] = armory
     }
+
+    function getUpgrade(list) {
+        list.push(heart2)
+    }
 }
