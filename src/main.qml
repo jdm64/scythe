@@ -1,6 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.0
+import QtGraphicalEffects 1.0
 import "Util.js" as Util
 
 ApplicationWindow {
@@ -13,6 +14,61 @@ ApplicationWindow {
     Component.onCompleted: {
         loadBoard(Util.getBoard(boardSelector.currentText))
         fixCardWidths()
+    }
+
+    Rectangle {
+        id: startScreen
+        z: 1
+        anchors.fill: parent
+
+        Text {
+            id: scytheLabel
+            font.pointSize: 36
+            y: .2 * parent.height
+            anchors.horizontalCenter: parent.horizontalCenter
+            text: "Scythe"
+        }
+        DropShadow {
+                anchors.fill: scytheLabel
+                horizontalOffset: 3
+                verticalOffset: 3
+                radius: 4
+                samples: 13
+                color: "grey"
+                source: scytheLabel
+        }
+        Row {
+            id: boaardSelectorRow
+            spacing: 5
+            anchors.top: scytheLabel.bottom
+            anchors.topMargin: 20
+            anchors.horizontalCenter: parent.horizontalCenter
+
+            ComboBox {
+                id: boardSelector
+                currentIndex: 0
+                model: Object.keys(Util.Boards)
+                onCurrentIndexChanged: loadBoard(Util.getBoard(textAt(currentIndex)))
+            }
+            Button {
+                text: "Random"
+                onClicked: {
+                    var newIdx = boardSelector.currentIndex
+                    var count = Object.keys(Util.Boards).length
+                    while (newIdx == boardSelector.currentIndex) {
+                        newIdx = Math.floor(count * Math.random())
+                    }
+                    boardSelector.currentIndex = newIdx
+                }
+            }
+        }
+        Button {
+            text: "Start"
+            anchors.top: boaardSelectorRow.bottom
+            anchors.topMargin: 20
+            anchors.horizontalCenter: parent.horizontalCenter
+            onClicked: startScreen.visible = false
+        }
     }
 
     ColumnLayout {
@@ -30,13 +86,6 @@ ApplicationWindow {
             ResourceCounter { id:  foodCtr; type: "food" }
             ResourceCounter { id: acardCtr; type: "acard"; visible: false }
             ResourceCounter { type: "enlist"; onClicked: enlist_dialog.open() }
-
-            ComboBox {
-                id: boardSelector
-                currentIndex: 0
-                model: Object.keys(Util.Boards)
-                onCurrentIndexChanged: loadBoard(Util.getBoard(textAt(currentIndex)));
-            }
         }
 
         Divider {}
