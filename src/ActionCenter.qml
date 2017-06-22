@@ -14,7 +14,9 @@ Item {
         anchors.fill: parent
 
         onDoubleClicked: {
-            parent.parent.doTopAction()
+            if (!token) {
+                parent.parent.doTopAction()
+            }
         }
     }
 
