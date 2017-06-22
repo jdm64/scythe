@@ -60,6 +60,10 @@ ApplicationWindow {
                     }
                     boardSelector.currentIndex = newIdx
                 }
+                Component.onCompleted: {
+                    clicked()
+                    clicked()
+                }
             }
         }
         Button {
